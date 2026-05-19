@@ -3,99 +3,382 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Senior Backend Engineer Portfolio</title>
+    <meta name="description" content="Naren Varsakiya - Technical Lead specializing in backend platforms, AI solutions, cloud native systems, and industrial digitalization.">
+    <title>Naren Varsakiya | Technical Lead</title>
     <style>
         :root {
-            --bg: #0d1117;
-            --card-bg: #161b22;
-            --text: #c9d1d9;
-            --text-dim: #8b949e;
-            --accent: #58a6ff;
-            --border: #30363d;
+            --bg: #0f172a;
+            --surface: #111827;
+            --surface-soft: #1f2937;
+            --text: #e5e7eb;
+            --muted: #a7b0c0;
+            --accent: #38bdf8;
+            --accent-strong: #22c55e;
+            --border: #334155;
+            --max-width: 1080px;
         }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; max-width: 900px; margin: 40px auto; padding: 0 20px; }
-        h1, h2, h3 { color: #fff; }
-        h2 { border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-top: 40px; }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .hero { margin-bottom: 40px; }
-        .hero h1 { margin-bottom: 5px; font-size: 2.5rem; }
-        .subtitle { color: var(--text-dim); font-size: 1.2rem; margin-top: 0; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 30px 0; }
-        .stat-card { background: var(--card-bg); border: 1px solid var(--border); padding: 20px; border-radius: 6px; text-align: center; }
-        .stat-num { font-size: 2rem; font-weight: bold; color: var(--accent); }
-        .stat-label { font-size: 0.9rem; color: var(--text-dim); }
-        .achievement-list { list-style-type: none; padding: 0; }
-        .achievement-item { background: var(--card-bg); border: 1px solid var(--border); margin-bottom: 15px; padding: 20px; border-radius: 6px; }
-        .tech-tag { display: inline-block; background: #21262d; border: 1px solid var(--border); padding: 2px 8px; border-radius: 12px; font-size: 0.85rem; margin-right: 5px; margin-top: 10px; color: var(--text-dim); }
-        .contact-links { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
-        .contact-btn { background: #21262d; border: 1px solid var(--border); padding: 10px 20px; border-radius: 6px; color: #fff; font-weight: 500; }
-        .contact-btn:hover { background: #30363d; text-decoration: none; }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .page {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 36px 22px 56px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr);
+            gap: 28px;
+            align-items: end;
+            padding: 42px 0 34px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .eyebrow {
+            margin: 0 0 10px;
+            color: var(--accent);
+            font-size: 0.88rem;
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            color: #ffffff;
+            font-size: clamp(2.4rem, 8vw, 4.8rem);
+            line-height: 1;
+            letter-spacing: 0;
+        }
+
+        .subtitle {
+            margin: 16px 0 0;
+            color: var(--muted);
+            font-size: clamp(1.05rem, 2vw, 1.35rem);
+            max-width: 760px;
+        }
+
+        .contact-panel {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            border-radius: 8px;
+            padding: 18px;
+        }
+
+        .contact-panel p {
+            margin: 0 0 10px;
+            color: var(--muted);
+        }
+
+        .contact-panel a {
+            display: block;
+            padding: 9px 0;
+            border-top: 1px solid var(--border);
+            overflow-wrap: anywhere;
+        }
+
+        section {
+            padding: 34px 0 0;
+        }
+
+        h2 {
+            margin: 0 0 18px;
+            color: #ffffff;
+            font-size: 1.35rem;
+        }
+
+        .summary {
+            max-width: 900px;
+            color: var(--muted);
+            font-size: 1.04rem;
+        }
+
+        .metric-grid,
+        .skill-grid,
+        .domain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+
+        .metric,
+        .skill-group,
+        .role,
+        .domain {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            border-radius: 8px;
+            padding: 18px;
+        }
+
+        .metric strong {
+            display: block;
+            color: var(--accent-strong);
+            font-size: 1.75rem;
+            line-height: 1.2;
+        }
+
+        .metric span,
+        .role .meta,
+        .skill-group p,
+        .domain {
+            color: var(--muted);
+        }
+
+        .skill-group h3,
+        .role h3 {
+            margin: 0 0 8px;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .skill-group p {
+            margin: 0;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 16px;
+        }
+
+        .role .meta {
+            margin: 0 0 12px;
+            font-size: 0.95rem;
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 19px;
+        }
+
+        li + li {
+            margin-top: 8px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .tag {
+            border: 1px solid var(--border);
+            background: var(--surface-soft);
+            border-radius: 999px;
+            color: var(--text);
+            font-size: 0.86rem;
+            padding: 5px 10px;
+        }
+
+        footer {
+            margin-top: 42px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+        }
+
+        @media (max-width: 760px) {
+            .page {
+                padding: 24px 16px 42px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 18px;
+            }
+        }
     </style>
 </head>
 <body>
-
-    <header class="hero">
-        <h1>[Your Name]</h1>
-        <p class="subtitle">Senior Backend Engineer | Distributed Systems & High-Throughput APIs</p>
-        <p>Architecting scalable backend infrastructures, optimizing database bottlenecks, and leading engineering teams to deliver resilient cloud systems.</p>
-    </header>
-
-    <section>
-        <h2>📊 Impact Metric Highlights</h2>
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-num">99.99%</div>
-                <div class="stat-label">SLA Maintained</div>
+    <main class="page">
+        <header class="hero">
+            <div>
+                <p class="eyebrow">Technical Lead</p>
+                <h1>Naren Varsakiya</h1>
+                <p class="subtitle">Backend Platforms Engineering, AI Solutions and Industrial Digitalization</p>
             </div>
-            <div class="stat-card">
-                <div class="stat-num">40%</div>
-                <div class="stat-label">Cloud Cost Reduction</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-num">10M+</div>
-                <div class="stat-label">Daily Active Users Scaled</div>
-            </div>
-        </div>
-    </section>
+            <aside class="contact-panel" aria-label="Contact details">
+                <p>Bhopal, Madhya Pradesh, India</p>
+                <a href="mailto:nvarsakiya@gmail.com">nvarsakiya@gmail.com</a>
+                <a href="tel:+919522150088">+919522150088</a>
+                <a href="https://linkedin.com/in/naren-varsakiya" target="_blank" rel="noreferrer">linkedin.com/in/naren-varsakiya</a>
+            </aside>
+        </header>
 
-    <section>
-        <h2>🏆 Major Achievements</h2>
-        <ul class="achievement-list">
-            <li class="achievement-item">
-                <h3>System Architecture & Migration</h3>
-                <p>Led the migration of a legacy monolithic infrastructure into a event-driven microservices architecture. Reduced API latency by 35% and unblocked cross-team deployment bottlenecks.</p>
-                <div>
-                    <span class="tech-tag">Go</span><span class="tech-tag">Kafka</span><span class="tech-tag">Kubernetes</span><span class="tech-tag">AWS</span>
+        <section aria-labelledby="summary-title">
+            <h2 id="summary-title">Professional Summary</h2>
+            <p class="summary">
+                Technical Lead with 9+ years of experience in Python development, scalable backend systems,
+                cloud native applications and operational platform engineering. Experienced in enterprise REST APIs,
+                real-time communication systems, monitoring platforms and AI-enabled applications using Flask,
+                FastAPI, WebSockets, Docker and Kubernetes.
+            </p>
+            <p class="summary">
+                Hands-on with Generative AI, Retrieval-Augmented Generation (RAG), workflow automation,
+                industrial audit platforms, renewable energy project management applications, infrastructure
+                observability and operational monitoring systems with Grafana.
+            </p>
+        </section>
+
+        <section aria-labelledby="highlights-title">
+            <h2 id="highlights-title">Highlights</h2>
+            <div class="metric-grid">
+                <div class="metric">
+                    <strong>9+ years</strong>
+                    <span>Python, backend systems and platform engineering experience</span>
                 </div>
-            </li>
-            <li class="achievement-item">
-                <h3>Database Optimization & Scale</h3>
-                <p>Redesigned a relational database schema and implemented strategic Redis caching layers, resolving a critical bottleneck that handled 15,000+ concurrent write operations per second.</p>
-                <div>
-                    <span class="tech-tag">PostgreSQL</span><span class="tech-tag">Redis</span><span class="tech-tag">Docker</span>
+                <div class="metric">
+                    <strong>8+ years</strong>
+                    <span>Python development across automation, APIs and operational systems</span>
                 </div>
-            </li>
-        </ul>
-    </section>
+                <div class="metric">
+                    <strong>2025-present</strong>
+                    <span>Technical Lead for backend architecture, AI workflows and platform reliability</span>
+                </div>
+            </div>
+        </section>
 
-    <section>
-        <h2>🛠️ Core Technical Stack</h2>
-        <p><strong>Languages:</strong> Python, Javascript, Typescript, Go, SQL</p>
-        <p><strong>Frameworks & Tools:</strong> FastAPI, Flask, Gin, Express, RestAPI, WebSockets, gRPC</p>
-        <p><strong>Infrastructure:</strong> AWS, Docker, Kubernetes, Terraform, CI/CD (GitHub Actions)</p>
-        <p><strong>Databases & Queues:</strong> PostgreSQL, MongoDB, Redis, Apache Kafka, RabbitMQ</p>
-    </section>
+        <section aria-labelledby="skills-title">
+            <h2 id="skills-title">Core Skills</h2>
+            <div class="skill-grid">
+                <article class="skill-group">
+                    <h3>Backend & Platform Engineering</h3>
+                    <p>Python, Javascript, Typescript, Golang, Flask, FastAPI, React.js, REST APIs, WebSockets, asynchronous processing, RBAC and ABAC.</p>
+                </article>
+                <article class="skill-group">
+                    <h3>AI & Data Systems</h3>
+                    <p>Generative AI applications, Retrieval-Augmented Generation, LangChain, LangGraph, vector databases, semantic search, data validation and AI workflow integration.</p>
+                </article>
+                <article class="skill-group">
+                    <h3>Cloud, DevOps & Infrastructure</h3>
+                    <p>Docker, Kubernetes, AWS EC2, EKS, ECR, Route53, Fargate, CI/CD pipelines, GitHub Actions, Terraform, Nginx and Traefik.</p>
+                </article>
+                <article class="skill-group">
+                    <h3>Monitoring & Operations</h3>
+                    <p>Grafana dashboards, infrastructure monitoring, service health monitoring, centralized logging, metrics, alerting and operational data visualization.</p>
+                </article>
+            </div>
+        </section>
 
-    <section>
-        <h2>📬 Connect With Me</h2>
-        <p>I am always open to discussing system architecture, backend scalability challenges, or technical leadership roles.</p>
-        <div class="contact-links">
-            <a href="mailto:your.email@example.com" class="contact-btn">📧 Email Me</a>
-            <a href="https://linkedin.com" target="_blank" class="contact-btn">💼 LinkedIn</a>
-            <a href="https://github.com" target="_blank" class="contact-btn">🐙 GitHub Profile</a>
-        </div>
-    </section>
+        <section aria-labelledby="experience-title">
+            <h2 id="experience-title">Professional Experience</h2>
+            <div class="timeline">
+                <article class="role">
+                    <h3>Technical Lead - HINNTS Consultancy Services Pvt Ltd</h3>
+                    <p class="meta">April 2025 - Present | Bengaluru, India (Remote)</p>
+                    <ul>
+                        <li>Lead backend architecture and development using Python, Flask, FastAPI and WebSockets.</li>
+                        <li>Design scalable REST APIs and real-time communication systems for enterprise applications and operational platforms.</li>
+                        <li>Build AI-enabled workflows, LLM integrations, vector database search and semantic retrieval for production systems.</li>
+                        <li>Develop industrial audit workflows, renewable energy project management capabilities and operational reporting pipelines.</li>
+                        <li>Manage Docker and Kubernetes deployments while supporting infrastructure reliability, logging, monitoring and observability.</li>
+                    </ul>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">WebSockets</span>
+                        <span class="tag">LLM Workflows</span>
+                        <span class="tag">Kubernetes</span>
+                    </div>
+                </article>
 
+                <article class="role">
+                    <h3>Software Engineer - HINNTS Consultancy Services Pvt Ltd</h3>
+                    <p class="meta">June 2020 - April 2025 | Bengaluru, India (Hybrid)</p>
+                    <ul>
+                        <li>Developed and maintained backend systems and REST APIs using Flask and FastAPI.</li>
+                        <li>Implemented WebSocket features for real-time application communication and operational updates.</li>
+                        <li>Delivered backend solutions across healthcare, sports, industrial audit and renewable energy service platforms.</li>
+                        <li>Integrated AI-enabled capabilities, event-driven services, hardware data sources and operational dashboards.</li>
+                        <li>Supported CI/CD workflows, Docker deployments, Kubernetes hosting and infrastructure scaling.</li>
+                    </ul>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">React.js</span>
+                        <span class="tag">WebSockets</span>
+                        <span class="tag">AI Integrations</span>
+                        <span class="tag">Event-Driven Services</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Kubernetes</span>
+                    </div>
+                </article>
+
+                <article class="role">
+                    <h3>Python Developer - KNT Infotech</h3>
+                    <p class="meta">June 2017 - May 2020 | Bhopal, India</p>
+                    <ul>
+                        <li>Developed Python automation scripts and backend services for operational systems.</li>
+                        <li>Built monitoring and integration solutions for CCTV systems, device communication and infrastructure services.</li>
+                        <li>Implemented multi-server file transfer, database synchronization, scheduled services and background jobs.</li>
+                    </ul>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Python Automation</span>
+                        <span class="tag">Backend Services</span>
+                        <span class="tag">CCTV Systems</span>
+                        <span class="tag">Device Integration</span>
+                        <span class="tag">Data Synchronization</span>
+                        <span class="tag">Background Jobs</span>
+                    </div>
+                </article>
+
+                <article class="role">
+                    <h3>Database Administrator - Multiwave Innovation</h3>
+                    <p class="meta">August 2013 - December 2014 | Jaipur, India</p>
+                    <ul>
+                        <li>Managed relational databases with focus on performance, security and availability.</li>
+                        <li>Supported application teams through query optimization and structured production data management.</li>
+                    </ul>
+                    <div class="tags">
+                        <span class="tag">Relational Databases</span>
+                        <span class="tag">Query Optimization</span>
+                        <span class="tag">Database Performance</span>
+                        <span class="tag">Database Security</span>
+                        <span class="tag">Production Data Management</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section aria-labelledby="domains-title">
+            <h2 id="domains-title">Domain Experience</h2>
+            <div class="domain-grid">
+                <div class="domain">Industrial Audit & Operational Platforms</div>
+                <div class="domain">Renewable Energy Services & Workflow Applications</div>
+                <div class="domain">Healthcare Systems</div>
+                <div class="domain">Real-Time Monitoring Platforms</div>
+                <div class="domain">Sports Platforms</div>
+                <div class="domain">Infrastructure & Operational Automation Systems</div>
+            </div>
+        </section>
+
+        <footer>
+            Available for backend platform engineering, AI workflow integration, operational systems and technical leadership work.
+        </footer>
+    </main>
 </body>
 </html>
